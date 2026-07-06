@@ -1,0 +1,1156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#221B14">
+<meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Ccircle cx='48' cy='48' r='44' fill='%23221B14' stroke='%23E9AE58' stroke-width='5'/%3E%3Crect x='34' y='34' width='28' height='28' fill='%23E9AE58'/%3E%3Crect x='34' y='34' width='28' height='28' fill='%23E9AE58' transform='rotate(45 48 48)'/%3E%3C/svg%3E">
+<title>The RenNASSance — Nass's 30-Day Rise</title>
+<style>
+  :root{
+    --ink:#221B14; --surface:#2C241B; --surface2:#372D21;
+    --sand:#F0E6D2; --dim:#BCAA8C; --gold:#E9AE58; --rose:#DE7E68;
+    --teal:#8FC4B7; --line:rgba(233,174,88,.16);
+    --serif:"Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{background:var(--ink);color:var(--sand);font-family:var(--sans);
+    line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:620px;margin:0 auto;padding:0 20px 96px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;line-height:1.2}
+  a{color:var(--gold)}
+  .eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--gold);font-weight:600}
+
+  /* ---------- grain ---------- */
+  .grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.055;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:64px 20px 0;text-align:center;overflow:hidden;
+    border-bottom:1px solid var(--line);background:var(--ink)}
+  .aurora{position:absolute;inset:-20% -30%;z-index:0;filter:blur(46px);opacity:.85;
+    background:
+      radial-gradient(ellipse 44% 34% at 28% 92%, rgba(233,174,88,.42), transparent 65%),
+      radial-gradient(ellipse 46% 36% at 74% 96%, rgba(222,126,104,.34), transparent 65%),
+      radial-gradient(ellipse 60% 30% at 50% 104%, rgba(143,196,183,.14), transparent 70%)}
+  @media (prefers-reduced-motion:no-preference){
+    .aurora{animation:breathe 9s ease-in-out infinite alternate}
+    @keyframes breathe{
+      from{transform:translateY(12px) scale(1);opacity:.7}
+      to{transform:translateY(-10px) scale(1.06);opacity:1}}
+  }
+  .hero>*{position:relative;z-index:1}
+  .logo{margin:0 auto 18px;display:block;filter:drop-shadow(0 0 18px rgba(233,174,88,.35))}
+  .hero .the{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--dim);
+    display:block;margin-bottom:2px}
+  .hero h1{font-size:clamp(40px,11vw,60px);margin:0 0 14px;color:var(--sand);
+    letter-spacing:.01em}
+  .hero h1 .L{display:inline-block}
+  .hero h1 .nass{color:var(--gold)}
+  @media (prefers-reduced-motion:no-preference){
+    .hero h1 .L{opacity:0;transform:translateY(26px);
+      animation:riseIn .7s cubic-bezier(.2,.8,.2,1) forwards;
+      animation-delay:calc(.06s * var(--i))}
+    @keyframes riseIn{to{opacity:1;transform:none}}
+    .logo{opacity:0;animation:sunUp 1s ease forwards .15s}
+    @keyframes sunUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  }
+  .hero p.sub{max-width:36ch;margin:0 auto;color:var(--dim);font-size:17px}
+  .hero .dedication{margin:22px auto 26px;font-family:var(--serif);font-style:italic;
+    color:var(--rose);font-size:15px}
+
+  /* ---------- ticker ---------- */
+  .ticker{position:relative;z-index:1;overflow:hidden;border-top:1px solid var(--line);
+    padding:9px 0;margin:0 -20px}
+  .ticker .track{display:inline-block;white-space:nowrap;font-family:var(--mono);
+    font-size:11px;letter-spacing:.22em;color:var(--gold);opacity:.75}
+  @media (prefers-reduced-motion:no-preference){
+    .ticker .track{animation:slide 26s linear infinite}
+    @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  }
+
+  /* ---------- sticky progress + nav ---------- */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(34,27,20,.94);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .progressrow{display:flex;align-items:center;gap:10px;max-width:620px;
+    margin:0 auto;padding:10px 20px 8px}
+  .progressrow svg.mini{flex:0 0 auto}
+  .progressrow .count{font-family:var(--mono);font-variant-numeric:tabular-nums;
+    font-size:13px;color:var(--gold);white-space:nowrap;font-weight:600}
+  .bar{flex:1;height:6px;border-radius:3px;background:var(--surface2);overflow:hidden}
+  .bar i{display:block;height:100%;width:0%;border-radius:3px;
+    background:linear-gradient(90deg,var(--rose),var(--gold));transition:width .5s ease}
+  .streak{display:flex;align-items:center;gap:4px;font-family:var(--mono);font-size:13px;
+    font-weight:700;color:var(--rose);white-space:nowrap;font-variant-numeric:tabular-nums}
+  nav.chips{display:flex;gap:8px;overflow-x:auto;padding:0 20px 10px;max-width:620px;
+    margin:0 auto;scrollbar-width:none}
+  nav.chips::-webkit-scrollbar{display:none}
+  nav.chips a{flex:0 0 auto;font-size:12px;font-weight:600;letter-spacing:.04em;
+    color:var(--sand);text-decoration:none;padding:6px 13px;border-radius:999px;
+    border:1px solid var(--line);background:var(--surface);transition:transform .12s ease}
+  nav.chips a:active{background:var(--surface2);transform:scale(.96)}
+
+  /* ---------- today's mission ---------- */
+  #today{padding-top:26px}
+  .todaycard{position:relative;overflow:hidden;background:
+      radial-gradient(ellipse 120% 90% at 50% 115%, rgba(233,174,88,.22), transparent 60%),
+      var(--surface);
+    border:1px solid rgba(233,174,88,.38);border-radius:18px;padding:22px 20px}
+  .todaycard .greet{font-family:var(--serif);font-style:italic;font-size:21px;
+    color:var(--sand);margin-bottom:2px}
+  .todaycard .aff{color:var(--dim);font-size:14px;margin-bottom:16px;min-height:1.4em}
+  .todayrow{display:flex;align-items:center;gap:16px}
+  .bigday{font-family:var(--mono);font-variant-numeric:tabular-nums;line-height:1;
+    font-size:44px;font-weight:700;color:var(--gold);text-shadow:0 0 22px rgba(233,174,88,.4)}
+  .bigday small{display:block;font-size:10px;letter-spacing:.18em;color:var(--dim);
+    font-weight:600;margin-bottom:4px}
+  .todayinfo{flex:1;min-width:0}
+  .todayinfo .t{font-weight:600;font-size:15px;color:var(--sand);line-height:1.35}
+  .todayinfo .m{font-size:12.5px;color:var(--dim)}
+  .gobtn{display:block;width:100%;margin-top:16px;padding:14px;border:0;cursor:pointer;
+    border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:700;
+    letter-spacing:.02em;color:#221B14;background:linear-gradient(120deg,var(--gold),var(--rose));
+    box-shadow:0 4px 22px rgba(233,174,88,.28);transition:transform .12s ease}
+  .gobtn:active{transform:scale(.97)}
+  .onething{margin-top:12px;font-size:12.5px;color:var(--dim);text-align:center}
+
+  /* ---------- sections ---------- */
+  section{padding:52px 0 8px}
+  .sechead{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .sechead svg{flex:0 0 auto}
+  .sechead .kicker{font-family:var(--mono);font-size:12px;color:var(--rose);
+    letter-spacing:.1em}
+  section>h2{font-size:30px;margin:2px 0 10px}
+  .lede{color:var(--dim);max-width:60ch;margin-bottom:22px}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:18px 18px 16px;margin-bottom:14px}
+  .card h3{font-size:19px;margin-bottom:8px;color:var(--gold);display:flex;
+    align-items:center;gap:9px}
+  .card h3 svg{flex:0 0 auto;opacity:.9}
+  .card p{color:var(--sand);margin-bottom:10px}
+  .card p:last-child{margin-bottom:0}
+  .card ul{margin:0 0 8px 18px;display:flex;flex-direction:column;gap:7px}
+  .card li{color:var(--sand)}
+  .card li b{color:var(--gold);font-weight:600}
+  .muted{color:var(--dim)}
+  .quote{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--sand);
+    border-left:2px solid var(--gold);padding:2px 0 2px 14px;margin:12px 0}
+
+  .pillars{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:520px){.pillars{grid-template-columns:1fr 1fr 1fr}}
+  .pillar{background:var(--surface2);border-radius:12px;padding:14px}
+  .pillar .picon{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .pillar p{font-size:14px;color:var(--dim);margin:0}
+  .pillar strong{display:block;font-family:var(--serif);font-size:18px;
+    color:var(--sand);margin-bottom:4px}
+
+  /* ---------- scroll reveals ---------- */
+  .js .reveal{opacity:0;transform:translateY(16px)}
+  .js .reveal.in{opacity:1;transform:none;
+    transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+  @media (prefers-reduced-motion:reduce){
+    .js .reveal{opacity:1;transform:none}}
+
+  /* ---------- day cards ---------- */
+  .weekhead{margin:34px 0 4px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .weekhead h3{font-size:22px;color:var(--sand)}
+  .weekhead .theme{font-family:var(--mono);font-size:12px;color:var(--teal);letter-spacing:.08em}
+  .weekgoal{color:var(--dim);font-size:14px;margin-bottom:14px;max-width:58ch}
+
+  details.day{background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;margin-bottom:10px;overflow:hidden}
+  details.day[open]{border-color:rgba(233,174,88,.4)}
+  details.day.glow{border-color:var(--gold);box-shadow:0 0 26px rgba(233,174,88,.30)}
+  details.day.done summary .daytitle{color:var(--dim);text-decoration:line-through;
+    text-decoration-color:rgba(233,174,88,.5)}
+  details.day summary{list-style:none;cursor:pointer;display:flex;align-items:center;
+    gap:12px;padding:13px 14px;user-select:none;transition:transform .1s ease}
+  details.day summary:active{transform:scale(.995)}
+  details.day summary::-webkit-details-marker{display:none}
+  .daynum{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13px;
+    font-weight:700;color:var(--gold);min-width:52px}
+  .daytitle{flex:1;font-size:14.5px;font-weight:600;color:var(--sand);line-height:1.35}
+  .pill{font-size:10px;font-weight:700;letter-spacing:.08em;padding:3px 8px;
+    border-radius:999px;white-space:nowrap}
+  .pill.post{background:rgba(233,174,88,.16);color:var(--gold)}
+  .pill.rest{background:rgba(143,196,183,.16);color:var(--teal)}
+  .pill.engage{background:rgba(222,126,104,.18);color:var(--rose)}
+  .stars{font-size:11px;color:var(--rose);letter-spacing:2px;white-space:nowrap}
+  .daybody{padding:2px 16px 16px;border-top:1px solid var(--line)}
+  .daybody dl{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+  .daybody dt{font-size:10.5px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);margin-bottom:2px}
+  .daybody dd{font-size:14.5px;color:var(--sand)}
+  .daybody dd.hook{font-family:var(--serif);font-style:italic;font-size:16px;
+    color:var(--gold)}
+  .checkrow{display:flex;align-items:center;gap:10px;margin-top:14px;padding-top:12px;
+    border-top:1px dashed var(--line)}
+  .checkrow label{font-size:13px;color:var(--dim);cursor:pointer}
+  .checkrow input{width:22px;height:22px;accent-color:var(--gold);cursor:pointer}
+
+  /* ---------- platform + lists ---------- */
+  .platform{border-left:3px solid var(--gold)}
+  .platform.ig{border-left-color:var(--rose)}
+  .platform.yt{border-left-color:#D96A6A}
+  .platform.fb{border-left-color:var(--teal)}
+  ol.steps{margin:0 0 8px 20px;display:flex;flex-direction:column;gap:8px}
+  ol.steps li{color:var(--sand);padding-left:4px}
+  ol.steps li::marker{color:var(--gold);font-family:var(--mono);font-weight:700}
+
+  .blind{border-left:3px solid var(--rose)}
+  .blind h3{color:var(--rose)}
+
+  footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);
+    color:var(--dim);font-size:13px}
+  footer p{margin-bottom:10px}
+  footer .sig{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:15px}
+
+  /* ---------- toast / confetti / milestone ---------- */
+  #toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,80px);z-index:120;
+    background:var(--surface2);border:1px solid rgba(233,174,88,.45);color:var(--sand);
+    font-size:14px;padding:11px 18px;border-radius:999px;max-width:86vw;text-align:center;
+    box-shadow:0 8px 30px rgba(0,0,0,.45);opacity:0;pointer-events:none;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .35s ease}
+  #toast.show{transform:translate(-50%,0);opacity:1}
+  #confetti{position:fixed;inset:0;z-index:110;pointer-events:none}
+  #milestone{position:fixed;inset:0;z-index:130;display:none;align-items:center;
+    justify-content:center;text-align:center;padding:30px;cursor:pointer;
+    background:radial-gradient(ellipse at 50% 60%, rgba(233,174,88,.30), rgba(34,27,20,.96) 70%)}
+  #milestone.show{display:flex}
+  #milestone .inner h2{font-size:clamp(30px,8vw,44px);color:var(--gold);margin:16px 0 10px}
+  #milestone .inner p{color:var(--sand);max-width:38ch;margin:0 auto 18px;font-size:16px}
+  #milestone .inner .tap{font-family:var(--mono);font-size:11px;letter-spacing:.2em;
+    color:var(--dim)}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="hero">
+  <div class="aurora" aria-hidden="true"></div>
+  <svg class="logo" width="96" height="96" viewBox="0 0 96 96" aria-label="The RenNASSance logo — an eight-point sun rising over a horizon">
+    <defs><clipPath id="sky"><rect x="0" y="0" width="96" height="60"/></clipPath></defs>
+    <circle cx="48" cy="48" r="45" fill="none" stroke="#E9AE58" stroke-width="2"/>
+    <g clip-path="url(#sky)">
+      <rect x="34" y="46" width="28" height="28" fill="#E9AE58" opacity=".95"/>
+      <rect x="34" y="46" width="28" height="28" fill="#E9AE58" transform="rotate(45 48 60)"/>
+    </g>
+    <line x1="14" y1="60" x2="82" y2="60" stroke="#E9AE58" stroke-width="2"/>
+    <line x1="48" y1="22" x2="48" y2="30" stroke="#DE7E68" stroke-width="2" stroke-linecap="round"/>
+    <line x1="27" y1="31" x2="32" y2="37" stroke="#DE7E68" stroke-width="2" stroke-linecap="round"/>
+    <line x1="69" y1="31" x2="64" y2="37" stroke="#DE7E68" stroke-width="2" stroke-linecap="round"/>
+    <line x1="30" y1="68" x2="40" y2="68" stroke="#E9AE58" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+    <line x1="56" y1="68" x2="66" y2="68" stroke="#E9AE58" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+    <line x1="38" y1="75" x2="58" y2="75" stroke="#E9AE58" stroke-width="2" stroke-linecap="round" opacity=".3"/>
+  </svg>
+  <span class="the">the</span>
+  <h1 aria-label="RenNASSance">
+    <span class="L" style="--i:1">R</span><span class="L" style="--i:2">e</span><span class="L" style="--i:3">n</span><span class="L nass" style="--i:4">N</span><span class="L nass" style="--i:5">A</span><span class="L nass" style="--i:6">S</span><span class="L nass" style="--i:7">S</span><span class="L" style="--i:8">a</span><span class="L" style="--i:9">n</span><span class="L" style="--i:10">c</span><span class="L" style="--i:11">e</span>
+  </h1>
+  <p class="sub">30 days. One honest camera. Your story, told by you.</p>
+  <p class="dedication">Made for Nass — yalla, Day One.</p>
+  <div class="ticker" aria-hidden="true"><span class="track" id="tickertrack">YALLA, ONE MORE&ensp;✦&ensp;POSTED BEATS PERFECT&ensp;✦&ensp;DOCUMENT, DON'T PERFORM&ensp;✦&ensp;SHARES OVER LIKES&ensp;✦&ensp;NO JUDGING BEFORE DAY 21&ensp;✦&ensp;ONE CARD A DAY&ensp;✦&ensp;</span></div>
+</div>
+
+<div class="topbar">
+  <div class="progressrow">
+    <svg class="mini" width="22" height="22" viewBox="0 0 96 96" aria-hidden="true">
+      <circle cx="48" cy="48" r="42" fill="none" stroke="#E9AE58" stroke-width="6"/>
+      <g><rect x="34" y="46" width="28" height="28" fill="#E9AE58"/>
+      <rect x="34" y="46" width="28" height="28" fill="#E9AE58" transform="rotate(45 48 60)"/></g>
+    </svg>
+    <span class="count" id="count">0 / 30</span>
+    <div class="bar"><i id="barfill"></i></div>
+    <span class="streak" id="streak" title="Check-in streak">
+      <svg width="12" height="15" viewBox="0 0 12 15" aria-hidden="true"><path d="M6 0C7 3 10 4.5 10 8.5A4.3 4.3 0 0 1 6 13 4.3 4.3 0 0 1 2 8.5C2 6.5 3 5.5 3.5 4 4.5 5 5 5.7 5 7 5.8 5.5 6.3 3 6 0z" fill="#DE7E68"/></svg>
+      <span id="streaknum">0</span>
+    </span>
+  </div>
+  <nav class="chips">
+    <a href="#today">Today</a>
+    <a href="#setup">Setup</a>
+    <a href="#persona">Persona</a>
+    <a href="#hopecore">Hopecore</a>
+    <a href="#camera">Camera</a>
+    <a href="#calendar">30 Days</a>
+    <a href="#platforms">Platforms</a>
+    <a href="#pro">Pro Moves</a>
+    <a href="#blind">Blind Spots</a>
+  </nav>
+</div>
+
+<div class="wrap">
+
+<!-- ============ TODAY ============ -->
+<section id="today">
+  <div class="todaycard">
+    <p class="greet" id="greet">Yalla, Nass.</p>
+    <p class="aff" id="aff">One card. That's the whole job.</p>
+    <div class="todayrow">
+      <div class="bigday"><small>UP NEXT</small><span id="todaynum">01</span></div>
+      <div class="todayinfo">
+        <p class="t" id="todaytitle">The launch: "Day 1 of 30"</p>
+        <p class="m" id="todaymeta">Everything you need is on one card.</p>
+      </div>
+    </div>
+    <button class="gobtn" id="gobtn" type="button">Open today's mission →</button>
+    <p class="onething">This button is basically the whole site. Tap it, do the card, check it off. Everything below is just backup.</p>
+  </div>
+</section>
+
+<!-- ============ SETUP ============ -->
+<section id="setup">
+  <div class="sechead"><svg width="14" height="14" viewBox="0 0 96 96" aria-hidden="true"><g><rect x="34" y="34" width="28" height="28" fill="#DE7E68"/><rect x="34" y="34" width="28" height="28" fill="#DE7E68" transform="rotate(45 48 48)"/></g></svg><span class="kicker">§00</span></div>
+  <h2>Before Day 1: set up once</h2>
+  <p class="lede">Fifteen minutes, one time. Then you never think about settings again.</p>
+
+  <div class="card reveal">
+    <h3>Accounts — 10 minutes</h3>
+    <ol class="steps">
+      <li>Download <b>TikTok, Instagram, YouTube, and Facebook</b>. Make an account on each ("Sign in with Google" is fine).</li>
+      <li>Use the same name on all four: try <b>NassRises</b>. Taken? Keep "Nass" in whatever you pick.</li>
+      <li>Profile photo: your face, outdoor light, slight smile. Same photo on all four.</li>
+      <li>Bio — paste this: <i>"Restarting at 35, in public. Come with me. New videos daily. (Not a trainer — just my journey.)"</i></li>
+    </ol>
+  </div>
+
+  <div class="card reveal">
+    <h3>Protect the peace — 5 minutes</h3>
+    <p class="muted">Do this before your first post, while it's calm.</p>
+    <ul>
+      <li><b>Instagram:</b> Settings → Hidden Words → turn everything on.</li>
+      <li><b>TikTok:</b> Settings → Privacy → Comments → filter spam and offensive comments.</li>
+      <li><b>YouTube:</b> Settings → Community → hold likely-inappropriate comments for review.</li>
+      <li>Blocking is housekeeping, not drama. You'll block freely and feel nothing.</li>
+    </ul>
+  </div>
+
+  <div class="card reveal">
+    <h3>The three taps you'll use daily</h3>
+    <ul>
+      <li><b>To post:</b> tap the <b>＋</b> in the middle → record or upload → Next → caption → Post.</li>
+      <li><b>To use a trending sound:</b> tap the spinning music title at the bottom of any video → "Use sound."</li>
+      <li><b>To reply to comments:</b> open your video → tap the speech bubble. Reply to everyone at first.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PERSONA ============ -->
+<section id="persona">
+  <div class="sechead"><svg width="14" height="14" viewBox="0 0 96 96" aria-hidden="true"><g><rect x="34" y="34" width="28" height="28" fill="#DE7E68"/><rect x="34" y="34" width="28" height="28" fill="#DE7E68" transform="rotate(45 48 48)"/></g></svg><span class="kicker">§01</span></div>
+  <h2>The Persona</h2>
+  <p class="lede">You're not "a fitness influencer." You're the only person on the internet living this exact story. That's the whole strategy.</p>
+
+  <div class="card reveal">
+    <h3>Brand DNA</h3>
+    <ul>
+      <li><b>Name:</b> The RenNASSance — your comeback, with your name in the middle of it.</li>
+      <li><b>The whole brand in one line:</b> "Restarting at 35, in public."</li>
+      <li><b>Voice:</b> the funny, honest older brother. You laugh at the machines, never at people.</li>
+      <li><b>Sign-off:</b> end every video with <i>"Yalla, one more."</i> Every single one. It becomes yours.</li>
+      <li><b>Never:</b> fake timelines, guru talk, shame.</li>
+    </ul>
+  </div>
+
+  <div class="card reveal">
+    <h3>Three kinds of videos</h3>
+    <p class="muted">Every post is one of these. Rotate them and you'll never run dry.</p>
+    <div class="pillars">
+      <div class="pillar"><div class="picon"><span class="eyebrow">Pillar 1</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E9AE58" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 9v6M6 7v10M18 7v10M21 9v6M6 12h12"/></svg></div>
+        <strong>Sweat</strong><p>Real workouts, real numbers, shaky last reps.</p></div>
+      <div class="pillar"><div class="picon"><span class="eyebrow">Pillar 2</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DE7E68" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-9-9c-1.2-2.8.6-6 3.7-6C8.6 5 10.5 6.2 12 8c1.5-1.8 3.4-3 5.3-3 3.1 0 4.9 3.2 3.7 6-2 4.5-9 9-9 9z"/></svg></div>
+        <strong>Heart</strong><p>The feelings under the fitness. Letters to Day-1 you.</p></div>
+      <div class="pillar"><div class="picon"><span class="eyebrow">Pillar 3</span>
+        <svg width="20" height="20" viewBox="0 0 96 96" aria-hidden="true"><g><rect x="34" y="34" width="28" height="28" fill="none" stroke="#8FC4B7" stroke-width="7"/><rect x="34" y="34" width="28" height="28" fill="none" stroke="#8FC4B7" stroke-width="7" transform="rotate(45 48 48)"/></g></svg></div>
+        <strong>Roots</strong><p>Your food, your culture, your people. (Your aunt's kitchen is a goldmine — see Day 9.)</p></div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <h3>The one rule</h3>
+    <p class="quote">Document, don't perform. Film your actual life — don't act out a fitness video. Real is what people follow now.</p>
+  </div>
+</section>
+
+<!-- ============ HOPECORE ============ -->
+<section id="hopecore">
+  <div class="sechead"><svg width="14" height="14" viewBox="0 0 96 96" aria-hidden="true"><g><rect x="34" y="34" width="28" height="28" fill="#DE7E68"/><rect x="34" y="34" width="28" height="28" fill="#DE7E68" transform="rotate(45 48 48)"/></g></svg><span class="kicker">§02</span></div>
+  <h2>The Hopecore Formula</h2>
+  <p class="lede">"Hopecore" is the internet's word for videos that make people feel like life is worth it. Yours will be the real kind. Five ingredients:</p>
+
+  <div class="card reveal">
+    <h3>Anatomy of one</h3>
+    <ol class="steps">
+      <li><b>Real footage.</b> Your shaking last rep, your sunrise walk. Never stock clips.</li>
+      <li><b>Music that builds.</b> Pick from the app's trending sounds (Setup shows you how).</li>
+      <li><b>A few glowing words on screen.</b> "you didn't quit this time."</li>
+      <li><b>A caption that zooms out.</b> "life is about the mornings you almost stayed in bed."</li>
+      <li><b>An ask at the end.</b> "Send this to someone restarting." Shares are the #1 signal.</li>
+    </ol>
+  </div>
+
+  <div class="card reveal">
+    <h3>Ones only you can make</h3>
+    <ul>
+      <li>A voice memo to Day-1 you, played over footage of Day-20 you actually doing it.</li>
+      <li>Your aunt's kitchen and your meal prep, one caption: "strength runs in this family."</li>
+      <li>The first time a gym stranger gives you the nod.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CAMERA LAB ============ -->
+<section id="camera">
+  <div class="sechead"><svg width="14" height="14" viewBox="0 0 96 96" aria-hidden="true"><g><rect x="34" y="34" width="28" height="28" fill="#DE7E68"/><rect x="34" y="34" width="28" height="28" fill="#DE7E68" transform="rotate(45 48 48)"/></g></svg><span class="kicker">§03</span></div>
+  <h2>Camera Lab</h2>
+  <p class="lede">Nobody is born natural on camera. It's reps, same as the gym — and the calendar levels you up a week at a time.</p>
+
+  <div class="card reveal">
+    <h3>Week 1 — Talk to one person</h3>
+    <ul>
+      <li>Pretend you're FaceTiming your best friend. Look into the lens, not the screen.</li>
+      <li>Once a day, talk to your phone for two minutes. Never post it. It's a warm-up set.</li>
+    </ul>
+  </div>
+
+  <div class="card reveal">
+    <h3>Week 2 — Outline, never script</h3>
+    <ul>
+      <li>Write 3 bullet points, then talk like yourself. Reading a script sounds like reading a script.</li>
+      <li>Film sentence by sentence and stitch the honest takes. Nobody owes anyone one perfect take.</li>
+    </ul>
+  </div>
+
+  <div class="card reveal">
+    <h3>Week 3 — Stretch takes</h3>
+    <ul>
+      <li>On a rest day: talk for 10 straight minutes, no cuts, no posting. After that, 45 seconds feels tiny.</li>
+      <li>Film while walking. Moving feet relax the voice.</li>
+    </ul>
+  </div>
+
+  <div class="card reveal">
+    <h3>Week 4 — Tell a story</h3>
+    <ul>
+      <li>Every longer video is the same shape: <b>I almost skipped → it got hard → here's why I stayed.</b></li>
+      <li>Leave one beat of silence before the honest line. It reads as true.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CALENDAR ============ -->
+<section id="calendar">
+  <div class="sechead"><svg width="14" height="14" viewBox="0 0 96 96" aria-hidden="true"><g><rect x="34" y="34" width="28" height="28" fill="#DE7E68"/><rect x="34" y="34" width="28" height="28" fill="#DE7E68" transform="rotate(45 48 48)"/></g></svg><span class="kicker">§04</span></div>
+  <h2>The 30 Days</h2>
+  <p class="lede">One card a day. Tap it, do it, check it off. Stars = how much talking-to-camera it asks of you (★ easy → ★★★★★ your finale).</p>
+
+  <div class="card reveal">
+    <h3>Three words you'll see</h3>
+    <ul>
+      <li><b>Hook</b> — your first 1.5 seconds. It decides whether people stop scrolling. Say it first, exactly or in your own words.</li>
+      <li><b>B-roll</b> — clips of things (shoes, weights, food) with no talking. A beginner's best friend.</li>
+      <li><b>CTA</b> — the one thing you ask viewers to do at the end.</li>
+    </ul>
+  </div>
+
+  <!-- WEEK 1 -->
+  <div class="weekhead"><h3>Week 1</h3><span class="theme">SHOW UP · ★–★★</span></div>
+  <p class="weekgoal">Launch the series. Nothing fancy — arriving is the content.</p>
+
+  <details class="day" data-day="1" id="day-1">
+    <summary><span class="daynum">Day 01</span><span class="daytitle">The launch: "Day 1 of 30"</span><span class="pill post">POST</span><span class="stars">★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook (first 1.5s)</dt><dd class="hook">"I'm 35. I've started and quit the gym six times. This time, you're coming with me."</dd>
+      <dt>Beats</dt><dd>Your face mid-breath after the workout → shoes on, one honest set → one line to camera. 20–30 seconds.</dd>
+      <dt>CTA</dt><dd>"Follow for Day 2. That's it. That's the ask."</dd>
+      <dt>Where</dt><dd>All four apps, posted fresh in each.</dd>
+      <dt>Camera task</dt><dd>Film 5 takes. Post the realest one, not the smoothest.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d1"><label for="d1">Day 1 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="2" id="day-2">
+    <summary><span class="daynum">Day 02</span><span class="daytitle">Baseline, no shame</span><span class="pill post">POST</span><span class="stars">★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"These are my real starting numbers. Don't clap yet."</dd>
+      <dt>Beats</dt><dd>B-roll + your voice over it — no face-talking needed. Words on screen: the weights, the reps, how stairs feel. An honest Day 2 is what makes Day 30 believable.</dd>
+      <dt>CTA</dt><dd>"Comment your Day 1 number. Any number."</dd>
+      <dt>Where</dt><dd>TikTok + Reels. YouTube title: "My honest starting point at 35."</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d2"><label for="d2">Day 2 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="3" id="day-3">
+    <summary><span class="daynum">Day 03</span><span class="daytitle">The Why</span><span class="pill post">POST</span><span class="stars">★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"Nobody taught us this stuff growing up. So I'm learning it out loud."</dd>
+      <dt>Beats</dt><dd>15 seconds, one take, one honest sentence about why now. Keep it light — the deeper version comes later, when you're ready.</dd>
+      <dt>CTA</dt><dd>"What's your why? I read every comment." (Then do.)</dd>
+      <dt>Where</dt><dd>All four.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d3"><label for="d3">Day 3 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="4" id="day-4">
+    <summary><span class="daynum">Day 04</span><span class="daytitle">The shaking last rep</span><span class="pill post">POST</span><span class="stars">★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">Words on screen, no talking: "the last rep is where the video lives."</dd>
+      <dt>Beats</dt><dd>Film your genuinely hard final set — the trembling, the exhale, the little nod after. Trending sound underneath.</dd>
+      <dt>CTA</dt><dd>"Save this for the day you want to restart."</dd>
+      <dt>Where</dt><dd>TikTok first; fresh uploads to the others.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d4"><label for="d4">Day 4 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="5" id="day-5">
+    <summary><span class="daynum">Day 05</span><span class="daytitle">First hopecore edit</span><span class="pill post">POST</span><span class="stars">★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">Sunrise clips + glowing text: "to the guy who kept quitting — look at you."</dd>
+      <dt>Beats</dt><dd>Follow the five-ingredient formula (§02), start to finish.</dd>
+      <dt>CTA</dt><dd>"Send this to someone restarting."</dd>
+      <dt>Where</dt><dd>All four. This format is your growth engine.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d5"><label for="d5">Day 5 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="6" id="day-6">
+    <summary><span class="daynum">Day 06</span><span class="daytitle">Community day</span><span class="pill engage">ENGAGE</span><span class="stars">★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Action</dt><dd>No video. Post a Story poll: "What's your restart excuse? Mine was 'Monday.'" Reply to every comment from Days 1–5. Then on Facebook, search and join three groups — try "fitness over 30," "beginner gym support," and one community that feels like yours. Join, read, be human. No posting yet.</dd>
+      <dt>Why</dt><dd>Facebook runs on real back-and-forth between people. Groups are your unfair advantage there.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d6"><label for="d6">Day 6 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="7" id="day-7">
+    <summary><span class="daynum">Day 07</span><span class="daytitle">Rest + stock the shelf</span><span class="pill rest">REST</span><span class="stars">★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Action</dt><dd>Body rests. You: write 10 first-lines in a phone note (your "hook bank"), screenshot your view counts as a baseline, do the 2-minute camera warm-up.</dd>
+      <dt>Rule</dt><dd>Don't judge any numbers yet. Judging starts Day 21 — not before.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d7"><label for="d7">Day 7 done</label></div></div>
+  </details>
+
+  <!-- WEEK 2 -->
+  <div class="weekhead"><h3>Week 2</h3><span class="theme">FIND THE VOICE · ★★–★★★</span></div>
+  <p class="weekgoal">Try all three pillars. Find out which version of you the internet responds to.</p>
+
+  <details class="day" data-day="8" id="day-8">
+    <summary><span class="daynum">Day 08</span><span class="daytitle">Week 1 recap, honestly</span><span class="pill post">POST</span><span class="stars">★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"One week in. Nothing changed. Everything changed."</dd>
+      <dt>Beats</dt><dd>Day 1 face next to Day 8 face. The body looks the same — say so. What changed: you showed up five times. Honesty is the whole play.</dd>
+      <dt>CTA</dt><dd>"Week 2 starts tomorrow. Stay."</dd>
+      <dt>Where</dt><dd>All four.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d8"><label for="d8">Day 8 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="9" id="day-9">
+    <summary><span class="daynum">Day 09</span><span class="daytitle">Roots: cook with the chef</span><span class="pill post">POST</span><span class="stars">★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"My aunt is a chef. I asked her to protein-hack the food we grew up on."</dd>
+      <dt>Beats</dt><dd>Her hands, the pan, the plate. She talks, you taste. Family + food + culture is everyone's favorite video — and she'll steal the show. Let her.</dd>
+      <dt>CTA</dt><dd>"What dish should we hack next?"</dd>
+      <dt>Where</dt><dd>Reels first (food likes pretty). YouTube title: "High-protein Middle Eastern food."</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d9"><label for="d9">Day 9 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="10" id="day-10">
+    <summary><span class="daynum">Day 10</span><span class="daytitle">React to a big creator</span><span class="pill post">POST</span><span class="stars">★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"Okay, but here's what that's like when you're NOT a fitness person."</dd>
+      <dt>Beats</dt><dd>Use TikTok's "stitch" (tap Share on their video → Stitch) to react to a huge form tutorial: try the move, laugh at the gap, land one real takeaway. Their audience sees your video.</dd>
+      <dt>CTA</dt><dd>"Follow for the beginner's version of everything."</dd>
+      <dt>Where</dt><dd>TikTok + YouTube.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d10"><label for="d10">Day 10 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="11" id="day-11">
+    <summary><span class="daynum">Day 11</span><span class="daytitle">First walk-and-talk</span><span class="pill post">POST</span><span class="stars">★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"What the gym feels like when you don't look like a gym person."</dd>
+      <dt>Beats</dt><dd>30 seconds, walking to the gym, three bullet points in your head, no script. Hands move, voice relaxes.</dd>
+      <dt>CTA</dt><dd>"If you've felt this, the comments are safe here."</dd>
+      <dt>Where</dt><dd>TikTok + Reels.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d11"><label for="d11">Day 11 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="12" id="day-12">
+    <summary><span class="daynum">Day 12</span><span class="daytitle">The funny one</span><span class="pill post">POST</span><span class="stars">★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"POV: you're 35 and this machine has 47 settings."</dd>
+      <dt>Beats</dt><dd>Gym comedy — the confusing machine, the mirror guys. Laugh at situations, never people. Funny is how strangers decide you're safe to follow.</dd>
+      <dt>CTA</dt><dd>"Tag someone who'd be worse at this than me."</dd>
+      <dt>Where</dt><dd>All four — funny travels.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d12"><label for="d12">Day 12 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="13" id="day-13">
+    <summary><span class="daynum">Day 13</span><span class="daytitle">Hopecore #2: the week in real moments</span><span class="pill post">POST</span><span class="stars">★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"5 real moments from a week of not quitting."</dd>
+      <dt>Beats</dt><dd>The week's five realest clips — outtakes count — with building music and a few glowing words.</dd>
+      <dt>CTA</dt><dd>"Send this to someone on their Week 2."</dd>
+      <dt>Where</dt><dd>All four.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d13"><label for="d13">Day 13 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="14" id="day-14">
+    <summary><span class="daynum">Day 14</span><span class="daytitle">Rest + first look at the numbers</span><span class="pill rest">REST</span><span class="stars">★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Action</dt><dd>20 minutes, once: open each app's stats and sort your videos by <b>how much of them people watched</b> — not likes. Note your top two; you'll remake them in Week 4. Film 3 hooks from your bank. Do the 10-minute uncut drill.</dd>
+      <dt>Why</dt><dd>People finishing your video is what makes the apps show it to more people. Likes are applause; finishing is fuel.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d14"><label for="d14">Day 14 done</label></div></div>
+  </details>
+
+  <!-- WEEK 3 -->
+  <div class="weekhead"><h3>Week 3</h3><span class="theme">GO DEEPER · ★★★–★★★★</span></div>
+  <p class="weekgoal">Storytelling, on your terms — and a challenge that turns viewers into a team.</p>
+
+  <details class="day" data-day="15" id="day-15">
+    <summary><span class="daynum">Day 15</span><span class="daytitle">Halfway: your first real story</span><span class="pill post">POST</span><span class="stars">★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"Halfway. Here's what nobody tells you about Day 15."</dd>
+      <dt>Beats</dt><dd>45 seconds, the Week-4 shape early: the morning you almost skipped → the set that humbled you → the small win that kept you. Film it in pieces.</dd>
+      <dt>CTA</dt><dd>"Day 1 is pinned — start there." (Pin it on every profile today: open the video → ⋯ → Pin.)</dd>
+      <dt>Where</dt><dd>All four.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d15"><label for="d15">Day 15 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="16" id="day-16">
+    <summary><span class="daynum">Day 16</span><span class="daytitle">The deep one — when you're ready</span><span class="pill post">POST</span><span class="stars">★★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"Being queer and Arab in a gym is its own workout. Let me explain."</dd>
+      <dt>Beats</dt><dd>45–60 seconds, filmed in pieces: where you never felt at home, and what feeling seen would look like. Before this one: comment filters on (§00), and film somewhere that's fully yours — a parked car is a great recording booth. Post it when it feels like power, not exposure. This video finds the people who need you most.</dd>
+      <dt>CTA</dt><dd>"If this is your story too — you're safe here. Yalla, one more."</dd>
+      <dt>Where</dt><dd>TikTok + Reels first; YouTube after you see the reception.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d16"><label for="d16">Day 16 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="17" id="day-17">
+    <summary><span class="daynum">Day 17</span><span class="daytitle">Launch the One More Challenge</span><span class="pill post">POST</span><span class="stars">★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"I'm starting a challenge anyone can win: do one more than yesterday."</dd>
+      <dt>Beats</dt><dd>One more rep, minute, or lap — film it, tag you, hashtag <b>#OneMoreWithNass</b>. Challenges people can *do* are how things spread now: your audience becomes the content.</dd>
+      <dt>CTA</dt><dd>"Post yours. I'll feature my favorites on Day 25."</dd>
+      <dt>Where</dt><dd>All four; in Facebook groups, word it as an invitation, not an ad.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d17"><label for="d17">Day 17 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="18" id="day-18">
+    <summary><span class="daynum">Day 18</span><span class="daytitle">Teach one thing, imperfectly</span><span class="pill post">POST</span><span class="stars">★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"I did this wrong for two weeks. Here's the fix that changed everything."</dd>
+      <dt>Beats</dt><dd>One exercise: your old form, then the fix someone taught you. You're one step ahead of the viewer, not on a mountain — that's why it works.</dd>
+      <dt>CTA</dt><dd>"Save this for leg day."</dd>
+      <dt>Where</dt><dd>YouTube first, boring-but-searchable title: "beginner chest press form over 35."</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d18"><label for="d18">Day 18 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="19" id="day-19">
+    <summary><span class="daynum">Day 19</span><span class="daytitle">Answer a comment on camera</span><span class="pill post">POST</span><span class="stars">★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"This question deserved more than a text answer."</dd>
+      <dt>Beats</dt><dd>On TikTok, press-and-hold a good comment → "Reply with video." Pick the best question you've gotten and answer it straight to camera. This is how casual viewers turn into fans.</dd>
+      <dt>CTA</dt><dd>"Ask me anything below — best one becomes Friday's video."</dd>
+      <dt>Where</dt><dd>TikTok's reply feature; recreate it by hand for Reels.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d19"><label for="d19">Day 19 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="20" id="day-20">
+    <summary><span class="daynum">Day 20</span><span class="daytitle">Hopecore #3: the letter</span><span class="pill post">POST</span><span class="stars">★★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"A letter to the man who kept quitting." (your voice starts immediately)</dd>
+      <dt>Beats</dt><dd>Five short lines to your past self, read once, honestly, over three weeks of footage. If your voice cracks, it stays in.</dd>
+      <dt>CTA</dt><dd>"Send this to the person you wrote off. Including yourself."</dd>
+      <dt>Where</dt><dd>All four. This is the one strangers find months from now.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d20"><label for="d20">Day 20 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="21" id="day-21">
+    <summary><span class="daynum">Day 21</span><span class="daytitle">Rest + the numbers are real now</span><span class="pill rest">REST</span><span class="stars">★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Action</dt><dd>Today's the first day the stats mean anything — the apps needed three weeks to learn who you're for. Find your best three videos by: most-watched-through, most saved, most shared. Those three define Week 4.</dd>
+      <dt>Rule</dt><dd>Whatever the numbers say: you made 18 videos in three weeks as a beginner. That's ahead of 95% of people who "want to start."</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d21"><label for="d21">Day 21 done</label></div></div>
+  </details>
+
+  <!-- WEEK 4 -->
+  <div class="weekhead"><h3>Week 4</h3><span class="theme">COMPOUND · ★★★–★★★★★</span></div>
+  <p class="weekgoal">Double down on what worked. Land the finale the whole month was building toward.</p>
+
+  <details class="day" data-day="22" id="day-22">
+    <summary><span class="daynum">Day 22</span><span class="daytitle">Remake the winner</span><span class="pill post">POST</span><span class="stars">★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd>Your best video from Day 21's list — remade with a sharper first second.</dd>
+      <dt>Beats</dt><dd>Same idea, tighter cut. Pros repeat winners; beginners chase new ideas. Be the pro.</dd>
+      <dt>CTA</dt><dd>Keep the original's ask.</dd>
+      <dt>Where</dt><dd>Wherever the original won.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d22"><label for="d22">Day 22 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="23" id="day-23">
+    <summary><span class="daynum">Day 23</span><span class="daytitle">Bring backup</span><span class="pill post">POST</span><span class="stars">★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"I brought backup." (they walk into frame)</dd>
+      <dt>Beats</dt><dd>Film with one person rooting for you — gym buddy, your aunt, anyone. Tag each other; you borrow each other's audiences. On Instagram, use "Invite collaborator" so it posts to both accounts.</dd>
+      <dt>CTA</dt><dd>"Who's your gym person? Tag them."</dd>
+      <dt>Where</dt><dd>All four.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d23"><label for="d23">Day 23 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="24" id="day-24">
+    <summary><span class="daynum">Day 24</span><span class="daytitle">The speech (hardest take)</span><span class="pill post">POST</span><span class="stars">★★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"If I could sit next to myself 24 days ago, here's the whole speech."</dd>
+      <dt>Beats</dt><dd>Your longest talk yet: 60 seconds, story shape, one deliberate pause. Four bullets, no script. Camera Lab final exam — you're ready.</dd>
+      <dt>CTA</dt><dd>"Day 30 is Friday. Don't miss it."</dd>
+      <dt>Where</dt><dd>All four.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d24"><label for="d24">Day 24 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="25" id="day-25">
+    <summary><span class="daynum">Day 25</span><span class="daytitle">Feature the challengers</span><span class="pill post">POST</span><span class="stars">★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"You did NOT come to play. Look at these."</dd>
+      <dt>Beats</dt><dd>The best #OneMoreWithNass entries (DM for permission first), celebrated by name. People you feature stay forever.</dd>
+      <dt>CTA</dt><dd>"Challenge keeps going after Day 30. Jump in."</dd>
+      <dt>Where</dt><dd>All four; tag everyone featured.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d25"><label for="d25">Day 25 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="26" id="day-26">
+    <summary><span class="daynum">Day 26</span><span class="daytitle">The honest one</span><span class="pill post">POST</span><span class="stars">★★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"30 days didn't give me abs. Good. Here's what it actually gave me."</dd>
+      <dt>Beats</dt><dd>Straight to camera: what four weeks really builds — the habit, the sleep, the mood, the baseline. In a feed full of fake 30-day bodies, telling the truth is what stands out.</dd>
+      <dt>CTA</dt><dd>"Follow for the 90-day version. That's where bodies change."</dd>
+      <dt>Where</dt><dd>All four.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d26"><label for="d26">Day 26 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="27" id="day-27">
+    <summary><span class="daynum">Day 27</span><span class="daytitle">The reaction</span><span class="pill post">POST</span><span class="stars">★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"I showed someone who loves me the video from Day 3. Filmed their face."</dd>
+      <dt>Beats</dt><dd>A best friend, your aunt — anyone in your corner — watches your Why video or the Day 20 letter. Their real face is the whole video.</dd>
+      <dt>CTA</dt><dd>"Show someone your Day 1. Film it."</dd>
+      <dt>Where</dt><dd>All four — this format flies on Facebook.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d27"><label for="d27">Day 27 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="28" id="day-28">
+    <summary><span class="daynum">Day 28</span><span class="daytitle">Rest + stage the finale</span><span class="pill rest">REST</span><span class="stars">★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Action</dt><dd>Film the Day-30 shots: same shirt, same spot, same framing as Day 1. Write the finale's five beats. Rest — you want Day 30 energy.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d28"><label for="d28">Day 28 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="29" id="day-29">
+    <summary><span class="daynum">Day 29</span><span class="daytitle">The outtakes</span><span class="pill post">POST</span><span class="stars">★★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">"Tomorrow is Day 30. But first — everything I didn't show you."</dd>
+      <dt>Beats</dt><dd>The bloopers: fumbled takes, the fall, the machine's revenge. Funny and human primes the finale.</dd>
+      <dt>CTA</dt><dd>"Day 30 drops tomorrow at [time]. Be here."</dd>
+      <dt>Where</dt><dd>All four.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d29"><label for="d29">Day 29 done</label></div></div>
+  </details>
+
+  <details class="day" data-day="30" id="day-30">
+    <summary><span class="daynum">Day 30</span><span class="daytitle">THE FINALE: Day 1 vs Day 30</span><span class="pill post">POST</span><span class="stars">★★★★★</span></summary>
+    <div class="daybody"><dl>
+      <dt>Hook</dt><dd class="hook">Split screen, identical framing: "30 days ago I made you a promise."</dd>
+      <dt>Beats</dt><dd>Day 1 and Day 30 side by side — same shirt, same spot. Count what's true: the workouts, the videos, the people. One beat of silence. Then: "Season 2. Day 1 of the next 30 drops Monday."</dd>
+      <dt>CTA</dt><dd>"Follow so you're here from THIS Day 1. Yalla, one more."</dd>
+      <dt>Where</dt><dd>Everywhere. Pin it next to Day 1 on every profile.</dd>
+    </dl><div class="checkrow"><input type="checkbox" id="d30"><label for="d30">Day 30 done</label></div></div>
+  </details>
+</section>
+
+<!-- ============ PLATFORMS ============ -->
+<section id="platforms">
+  <div class="sechead"><svg width="14" height="14" viewBox="0 0 96 96" aria-hidden="true"><g><rect x="34" y="34" width="28" height="28" fill="#DE7E68"/><rect x="34" y="34" width="28" height="28" fill="#DE7E68" transform="rotate(45 48 48)"/></g></svg><span class="kicker">§05</span></div>
+  <h2>The Four Apps</h2>
+  <p class="lede">Same video, four apps — but always posted fresh inside each app. Sharing a TikTok (with its watermark) to Instagram gets buried; the apps punish each other's logos.</p>
+
+  <div class="card platform reveal">
+    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E9AE58" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M9 17.5a3.2 3.2 0 1 0 3.2 3.2V4c1 2.4 3 3.8 5.6 4"/></svg>TikTok — where strangers find you</h3>
+    <ul>
+      <li>The first second is everything. Start mid-action; cut every "hey guys."</li>
+      <li>Raw beats polished here. Trending sounds help; your specific story helps more.</li>
+      <li>Sweet spot: 20–40 seconds.</li>
+    </ul>
+  </div>
+
+  <div class="card platform ig reveal">
+    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DE7E68" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#DE7E68" stroke="none"/></svg>Instagram — where fans become friends</h3>
+    <ul>
+      <li>Slightly prettier here: warm light, a good cover frame.</li>
+      <li>Post Stories most days — polls, behind-the-scenes. That's where the friendship happens.</li>
+      <li>Day 23's collab feature posts one video to both accounts.</li>
+    </ul>
+  </div>
+
+  <div class="card platform yt reveal">
+    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D96A6A" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9.2v5.6L15 12z" fill="#D96A6A" stroke="none"/></svg>YouTube Shorts — works like search</h3>
+    <ul>
+      <li>Boring-but-searchable titles win: "beginner chest press form over 35."</li>
+      <li>Keep it 15–30 seconds — people finishing your video is what promotes it.</li>
+      <li>Teaching videos (Day 18) get found for years.</li>
+    </ul>
+  </div>
+
+  <div class="card platform fb reveal">
+    <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8FC4B7" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.4c2.6.1 4.4 1.6 5 4.6"/></svg>Facebook — where your age group lives</h3>
+    <ul>
+      <li>Groups are the cheat code. Be a member first (Day 6), a poster second (Day 17).</li>
+      <li>Post like an invitation, never an ad.</li>
+      <li>Reaction and family videos do their best work here.</li>
+    </ul>
+  </div>
+
+  <div class="card reveal">
+    <h3>The routine</h3>
+    <ol class="steps">
+      <li>Film once, phone vertical.</li>
+      <li>Post it fresh inside each app; tweak the first line for each.</li>
+      <li>This month is launch pace (6/week). After Day 30: 3–5 a week, forever. That beats daily-then-vanish.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PRO MOVES ============ -->
+<section id="pro">
+  <div class="sechead"><svg width="14" height="14" viewBox="0 0 96 96" aria-hidden="true"><g><rect x="34" y="34" width="28" height="28" fill="#DE7E68"/><rect x="34" y="34" width="28" height="28" fill="#DE7E68" transform="rotate(45 48 48)"/></g></svg><span class="kicker">§06</span></div>
+  <h2>What the Top 5% Do</h2>
+  <p class="lede">The habits that separate people who grow from people who post. They're already built into your calendar.</p>
+
+  <div class="card reveal">
+    <h3>Systems</h3>
+    <ul>
+      <li><b>Batch:</b> rest days produce 3 videos. Never wake up owing the internet content.</li>
+      <li><b>Hook bank:</b> a phone note with 10 first-lines at all times. Write 10, film 3, post 1.</li>
+      <li><b>20 minutes weekly, 3 numbers only:</b> % watched, saves, shares. Likes are noise.</li>
+      <li><b>Remake winners</b> before inventing anything new (Day 22).</li>
+    </ul>
+  </div>
+
+  <div class="card reveal">
+    <h3>People</h3>
+    <ul>
+      <li><b>Live in your comments for the first hour</b> after posting. Early replies push the video further.</li>
+      <li><b>Answer one comment with a video</b> every week (Day 19). It turns viewers into regulars.</li>
+      <li><b>End the same way every time.</b> "Yalla, one more" — until strangers say it back. Then it's a community.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ BLIND SPOTS ============ -->
+<section id="blind">
+  <div class="sechead"><svg width="14" height="14" viewBox="0 0 96 96" aria-hidden="true"><g><rect x="34" y="34" width="28" height="28" fill="#DE7E68"/><rect x="34" y="34" width="28" height="28" fill="#DE7E68" transform="rotate(45 48 48)"/></g></svg><span class="kicker">§07</span></div>
+  <h2>Blind Spots</h2>
+  <p class="lede">Things nobody tells beginners — so they can't hurt you.</p>
+
+  <div class="card blind reveal">
+    <h3>How the apps actually work</h3>
+    <ul>
+      <li><b>Your first 10 posts will get almost no views.</b> Normal. The apps take ~3 weeks to learn who you're for. No judging before Day 21.</li>
+      <li><b>Shares beat likes.</b> 40 shares outranks 400 likes. Saves are close behind.</li>
+      <li><b>Never delete a flop.</b> Old videos wake up weeks later, all the time.</li>
+      <li><b>The first 2 seconds kill more videos than anything else.</b> If you'd swipe past it, trim it.</li>
+    </ul>
+  </div>
+
+  <div class="card blind reveal">
+    <h3>Protect yourself first</h3>
+    <ul>
+      <li><b>Decide your lines before Day 16, in writing:</b> what's on camera, what never is — relationships, faith, home, family. Decide once, calmly. Never decide mid-comment-section.</li>
+      <li><b>Filters on before you need them</b> (§00). Block instantly, silently, guiltlessly. Never argue on camera — it just promotes the wrong video.</li>
+      <li><b>Keep your gym's name, your street, and your building off camera.</b> Post after you leave, not live. And your filming spot doesn't have to be home — a parked car is a private recording booth with great sound.</li>
+      <li><b>On a heavy day, let a friend skim your comments first.</b> Real creators do this. It's strength, not weakness.</li>
+    </ul>
+  </div>
+
+  <div class="card blind reveal">
+    <h3>Money &amp; rules</h3>
+    <ul>
+      <li><b>Use sounds from inside the apps</b> — outside music can get your video muted.</li>
+      <li><b>If a brand sends anything free, say "gifted" on camera.</b> Every time, from follower #1.</li>
+      <li><b>Never buy followers.</b> It poisons the numbers brands actually check.</li>
+    </ul>
+  </div>
+
+  <div class="card blind reveal">
+    <h3>Body &amp; mind</h3>
+    <ul>
+      <li><b>30 days changes habits, not bodies</b> — and saying that out loud (Day 26) is a strategy, not a confession.</li>
+      <li><b>Rest days are part of the machine.</b> 3–5 posts a week forever beats daily-then-gone.</li>
+      <li><b>Unfollow anything that makes you feel behind.</b> Your feed is training you too.</li>
+      <li><b>Been years since a checkup?</b> See a doctor before Day 1.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>Built on current platform research: what actually gets watched, finished, and shared on TikTok, Reels, Shorts, and Facebook. When your own numbers disagree with this guide, trust your numbers.</p>
+  <p class="sig">Yalla, one more. — with love, from across town</p>
+</footer>
+
+</div>
+
+<div id="toast" role="status"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div id="milestone" role="dialog" aria-label="Milestone reached">
+  <div class="inner">
+    <svg width="72" height="72" viewBox="0 0 96 96" aria-hidden="true"><g><rect x="34" y="34" width="28" height="28" fill="#E9AE58"/><rect x="34" y="34" width="28" height="28" fill="#E9AE58" transform="rotate(45 48 48)"/></g></svg>
+    <h2 id="msTitle">Milestone</h2>
+    <p id="msBody"></p>
+    <p class="tap">TAP ANYWHERE TO CONTINUE</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY='rennassance-v2', OLDKEY='nassrises-v1', TOTAL=30;
+  var reduced=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- state ---------- */
+  var state={checks:{},streak:0,last:'',visited:false,seenMs:{}};
+  try{
+    var raw=localStorage.getItem(KEY);
+    if(raw){ state=JSON.parse(raw)||state; state.checks=state.checks||{}; state.seenMs=state.seenMs||{}; }
+    else{
+      var old=localStorage.getItem(OLDKEY);
+      if(old){ state.checks=JSON.parse(old)||{}; }
+    }
+  }catch(e){}
+  function save(){ try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){} }
+
+  /* ---------- els ---------- */
+  var boxes=[].slice.call(document.querySelectorAll('.checkrow input'));
+  var count=document.getElementById('count');
+  var fill=document.getElementById('barfill');
+  var streaknum=document.getElementById('streaknum');
+  var todaynum=document.getElementById('todaynum');
+  var todaytitle=document.getElementById('todaytitle');
+  var todaymeta=document.getElementById('todaymeta');
+  var gobtn=document.getElementById('gobtn');
+  var greet=document.getElementById('greet');
+  var aff=document.getElementById('aff');
+  var toastEl=document.getElementById('toast');
+  var ms=document.getElementById('milestone');
+  var msTitle=document.getElementById('msTitle');
+  var msBody=document.getElementById('msBody');
+
+  function doneCount(){ var n=0; boxes.forEach(function(b){ if(state.checks[b.id]) n++ }); return n; }
+  function nextDay(){ for(var i=1;i<=TOTAL;i++){ if(!state.checks['d'+i]) return i; } return null; }
+  function pad(n){ return (n<10?'0':'')+n; }
+  function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+  /* ---------- copy pools (variable reward) ---------- */
+  var AFFIRM=[
+    'One card. That’s the whole job.',
+    'Show up ugly. Show up anyway.',
+    'Document, don’t perform.',
+    'Nobody watching yet means free practice.',
+    'The streak doesn’t care about motivation.',
+    'Quiet consistency reads as confidence.',
+    'Proof over promises.',
+    'Posted beats perfect.'
+  ];
+  var CHEER=[
+    'Logged. One more brick.',
+    'Day secured.',
+    'That counted. It all counts.',
+    'Posted beats perfect.',
+    'Streak fed.',
+    'Somewhere, Day-1 you just exhaled.',
+    'That’s a rep. Take the credit.',
+    'Quietly becoming undeniable.',
+    'Done is the whole game today.',
+    'Another one. Yalla.'
+  ];
+  var MILES={
+    7:['Week one: done','Most people never get past Day 4. You just did. The series is real now.'],
+    14:['Two weeks deep','You’ve tried every pillar and survived a walk-and-talk. The voice is forming.'],
+    21:['Day 21 — the numbers are real now','Whatever the stats say: 18 videos in three weeks, as a beginner. That’s ahead of 95% of people who “want to start.”'],
+    30:['30 days. Done.','A name, a community, a habit, and a camera that doesn’t scare you anymore. Season 2 is yours whenever you want it. Yalla — one more.']
+  };
+
+  /* ---------- greeting (fresh every visit) ---------- */
+  (function(){
+    var h=new Date().getHours(), g;
+    if(h>=5&&h<12) g=pick(['Sabah el kheir, Nass.','Morning, Nass. Light’s good today.','Up before the excuses. Nice.']);
+    else if(h>=12&&h<17) g=pick(['Afternoon, Nass.','Still moving. Good.','Midday check-in, then.']);
+    else if(h>=17&&h<22) g=pick(['Masa el kheir, Nass.','Evening. Golden hour, technically.','The day’s not done with you yet.']);
+    else g=pick(['Late shift, huh.','The streak keeps night hours too.','Quiet hours. Good time to plan.']);
+    greet.textContent=g;
+    aff.textContent=pick(AFFIRM);
+  })();
+
+  /* ---------- today card ---------- */
+  function renderToday(){
+    var n=nextDay();
+    if(n===null){
+      todaynum.textContent='✦';
+      todaytitle.textContent='All 30 days complete.';
+      todaymeta.textContent='Season 2 is yours to write.';
+      gobtn.textContent='Relive the finale →';
+      gobtn.dataset.target='30';
+      return;
+    }
+    var det=document.getElementById('day-'+n);
+    var title=det?det.querySelector('.daytitle').textContent:'';
+    var pill=det?det.querySelector('.pill').textContent:'';
+    var stars=det?det.querySelector('.stars').textContent:'';
+    todaynum.textContent=pad(n);
+    todaytitle.textContent=title;
+    todaymeta.textContent=pill+' · talking level '+stars;
+    gobtn.textContent='Open Day '+n+'’s mission →';
+    gobtn.dataset.target=String(n);
+  }
+  gobtn.addEventListener('click',function(){
+    var n=gobtn.dataset.target||'1';
+    var det=document.getElementById('day-'+n);
+    if(!det) return;
+    det.open=true;
+    det.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+    det.classList.add('glow');
+    setTimeout(function(){det.classList.remove('glow')},2200);
+  });
+
+  /* ---------- progress ---------- */
+  function renderAll(){
+    var done=doneCount();
+    boxes.forEach(function(b){
+      var on=!!state.checks[b.id];
+      b.checked=on;
+      var det=b.closest('details');
+      if(det){ det.classList.toggle('done',on); }
+    });
+    count.textContent=done+' / '+TOTAL;
+    fill.style.width=(done/TOTAL*100)+'%';
+    streaknum.textContent=String(state.streak||0);
+    renderToday();
+  }
+
+  /* ---------- streak (forgiving) ---------- */
+  function bumpStreak(){
+    var today=new Date().toDateString();
+    if(state.last===today) return;
+    var yest=new Date(Date.now()-864e5).toDateString();
+    state.streak=(state.last===yest)?(state.streak||0)+1:1;
+    state.last=today;
+  }
+
+  /* ---------- toast ---------- */
+  var toastTimer=null;
+  function toast(msg){
+    toastEl.textContent=msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){toastEl.classList.remove('show')},2600);
+  }
+
+  /* ---------- confetti ---------- */
+  var canvas=document.getElementById('confetti'), ctx=canvas.getContext('2d');
+  var parts=[], raf=null;
+  function sizeCanvas(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+  sizeCanvas(); window.addEventListener('resize',sizeCanvas);
+  var COLORS=['#E9AE58','#DE7E68','#8FC4B7','#F0E6D2'];
+  function burst(n,yFrac){
+    if(reduced) return;
+    var y=canvas.height*(yFrac||0.55);
+    for(var i=0;i<n;i++){
+      parts.push({
+        x:canvas.width/2+(Math.random()-0.5)*120, y:y,
+        vx:(Math.random()-0.5)*9, vy:-(4+Math.random()*8),
+        s:3+Math.random()*5, c:COLORS[Math.floor(Math.random()*COLORS.length)],
+        r:Math.random()*Math.PI, vr:(Math.random()-0.5)*0.3, life:70+Math.random()*40
+      });
+    }
+    if(!raf) tick();
+  }
+  function tick(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    parts=parts.filter(function(p){return p.life>0});
+    if(!parts.length){ raf=null; return; }
+    parts.forEach(function(p){
+      p.x+=p.vx; p.y+=p.vy; p.vy+=0.22; p.r+=p.vr; p.life--;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r);
+      ctx.globalAlpha=Math.max(0,Math.min(1,p.life/40));
+      ctx.fillStyle=p.c; ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s*1.6); ctx.restore();
+    });
+    raf=requestAnimationFrame(tick);
+  }
+
+  /* ---------- milestone overlay ---------- */
+  function showMilestone(n){
+    var m=MILES[n]; if(!m||state.seenMs[n]) return;
+    state.seenMs[n]=true; save();
+    msTitle.textContent=m[0]; msBody.textContent=m[1];
+    ms.classList.add('show');
+    burst(n===30?220:120,0.45);
+  }
+  ms.addEventListener('click',function(){ms.classList.remove('show')});
+
+  /* ---------- check handling ---------- */
+  boxes.forEach(function(b){
+    b.addEventListener('change',function(){
+      state.checks[b.id]=b.checked;
+      if(b.checked){
+        bumpStreak();
+        toast(pick(CHEER));
+        burst(46,0.62);
+        var done=doneCount();
+        if(MILES[done]) showMilestone(done);
+      }
+      save(); renderAll();
+    });
+  });
+
+  /* ---------- first visit counts ---------- */
+  if(!state.visited){
+    state.visited=true; save();
+    setTimeout(function(){ toast('You showed up. That already counts.'); },1100);
+  }
+
+  /* ---------- scroll reveals (position-based; works in every webview) ---------- */
+  var revealEls=[].slice.call(document.querySelectorAll('.reveal'));
+  var revealPending=false;
+  function revealCheck(){
+    revealPending=false;
+    if(!revealEls.length) return;
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    revealEls=revealEls.filter(function(el){
+      if(el.getBoundingClientRect().top<vh*0.94){ el.classList.add('in'); return false; }
+      return true;
+    });
+  }
+  function onScroll(){
+    if(revealPending) return;
+    revealPending=true;
+    requestAnimationFrame(revealCheck);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  window.addEventListener('touchmove',onScroll,{passive:true});
+  document.addEventListener('scroll',onScroll,{passive:true,capture:true});
+  revealCheck();
+  /* safety net: nothing stays hidden past 3s of being idle */
+  setTimeout(function(){
+    revealEls.forEach(function(el){
+      if(el.getBoundingClientRect().top<(window.innerHeight||99999)) el.classList.add('in');
+    });
+    revealEls=revealEls.filter(function(el){return !el.classList.contains('in')});
+  },3000);
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
